@@ -54,33 +54,40 @@
             this.resulltBox = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.panelTop = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.groupRegs = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelDX = new System.Windows.Forms.Label();
+            this.labelAX = new System.Windows.Forms.Label();
+            this.labelCX = new System.Windows.Forms.Label();
+            this.labelBX = new System.Windows.Forms.Label();
             this.panelMiddle = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.addShortcut = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnEnqueue = new System.Windows.Forms.Button();
-            this.btnMakro = new System.Windows.Forms.Button();
+            this.btnQueueClr = new System.Windows.Forms.Button();
             this.btnDisplay = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupRegs = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelAX = new System.Windows.Forms.Label();
-            this.labelBX = new System.Windows.Forms.Label();
-            this.labelCX = new System.Windows.Forms.Label();
-            this.labelDX = new System.Windows.Forms.Label();
+            this.btnMakro = new System.Windows.Forms.Button();
+            this.btnEnqueue = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnEnqueueAg = new System.Windows.Forms.Button();
             this.controlPanel.SuspendLayout();
             this.groupCommands.SuspendLayout();
             this.shortcutPanel.SuspendLayout();
             this.panelTop.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupRegs.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.panelMiddle.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.groupRegs.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnA
@@ -96,6 +103,7 @@
             this.btnA.TabIndex = 0;
             this.btnA.Text = "A";
             this.btnA.UseVisualStyleBackColor = false;
+            this.btnA.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // controlPanel
             // 
@@ -109,9 +117,9 @@
             this.controlPanel.Controls.Add(this.btnL, 2, 1);
             this.controlPanel.Controls.Add(this.btnH, 1, 0);
             this.controlPanel.Controls.Add(this.btnA, 0, 0);
-            this.controlPanel.Controls.Add(this.btnB, 0, 3);
-            this.controlPanel.Controls.Add(this.btnC, 0, 1);
-            this.controlPanel.Controls.Add(this.btnD, 0, 2);
+            this.controlPanel.Controls.Add(this.btnC, 0, 2);
+            this.controlPanel.Controls.Add(this.btnD, 0, 3);
+            this.controlPanel.Controls.Add(this.btnB, 0, 1);
             this.controlPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.controlPanel.Location = new System.Drawing.Point(5, 5);
             this.controlPanel.Name = "controlPanel";
@@ -137,6 +145,7 @@
             this.btnGo.TabIndex = 5;
             this.btnGo.Text = "GO";
             this.btnGo.UseVisualStyleBackColor = false;
+            this.btnGo.Click += new System.EventHandler(this.btnFun_Click);
             // 
             // btnClr
             // 
@@ -151,6 +160,7 @@
             this.btnClr.TabIndex = 4;
             this.btnClr.Text = "Clr";
             this.btnClr.UseVisualStyleBackColor = false;
+            this.btnClr.Click += new System.EventHandler(this.btnFun_Click);
             // 
             // btnL
             // 
@@ -165,6 +175,7 @@
             this.btnL.TabIndex = 3;
             this.btnL.Text = "L";
             this.btnL.UseVisualStyleBackColor = false;
+            this.btnL.Click += new System.EventHandler(this.btnHL_Click);
             // 
             // btnH
             // 
@@ -179,6 +190,7 @@
             this.btnH.TabIndex = 2;
             this.btnH.Text = "H";
             this.btnH.UseVisualStyleBackColor = false;
+            this.btnH.Click += new System.EventHandler(this.btnHL_Click);
             // 
             // btnB
             // 
@@ -186,13 +198,14 @@
             this.btnB.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnB.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnB.Location = new System.Drawing.Point(4, 148);
+            this.btnB.Location = new System.Drawing.Point(4, 52);
             this.btnB.Margin = new System.Windows.Forms.Padding(0);
             this.btnB.Name = "btnB";
-            this.btnB.Size = new System.Drawing.Size(45, 48);
+            this.btnB.Size = new System.Drawing.Size(45, 46);
             this.btnB.TabIndex = 1;
             this.btnB.Text = "B";
             this.btnB.UseVisualStyleBackColor = false;
+            this.btnB.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // btnC
             // 
@@ -200,13 +213,14 @@
             this.btnC.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnC.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnC.Location = new System.Drawing.Point(4, 52);
+            this.btnC.Location = new System.Drawing.Point(4, 100);
             this.btnC.Margin = new System.Windows.Forms.Padding(0);
             this.btnC.Name = "btnC";
             this.btnC.Size = new System.Drawing.Size(45, 46);
             this.btnC.TabIndex = 1;
             this.btnC.Text = "C";
             this.btnC.UseVisualStyleBackColor = false;
+            this.btnC.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // btnD
             // 
@@ -214,13 +228,14 @@
             this.btnD.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnD.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnD.Location = new System.Drawing.Point(4, 100);
+            this.btnD.Location = new System.Drawing.Point(4, 148);
             this.btnD.Margin = new System.Windows.Forms.Padding(0);
             this.btnD.Name = "btnD";
-            this.btnD.Size = new System.Drawing.Size(45, 46);
+            this.btnD.Size = new System.Drawing.Size(45, 48);
             this.btnD.TabIndex = 1;
             this.btnD.Text = "D";
             this.btnD.UseVisualStyleBackColor = false;
+            this.btnD.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // btnMov
             // 
@@ -236,6 +251,7 @@
             this.btnMov.TabIndex = 3;
             this.btnMov.Text = "MOV";
             this.btnMov.UseVisualStyleBackColor = false;
+            this.btnMov.Click += new System.EventHandler(this.btnCommand_Click);
             // 
             // groupCommands
             // 
@@ -268,6 +284,7 @@
             this.btnSub.TabIndex = 3;
             this.btnSub.Text = "SUB";
             this.btnSub.UseVisualStyleBackColor = false;
+            this.btnSub.Click += new System.EventHandler(this.btnCommand_Click);
             // 
             // btnAdd
             // 
@@ -283,6 +300,7 @@
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnCommand_Click);
             // 
             // inputBox
             // 
@@ -465,6 +483,7 @@
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panelTop.Controls.Add(this.groupBox1);
             this.panelTop.Controls.Add(this.groupRegs);
             this.panelTop.Controls.Add(this.shortcutPanel);
             this.panelTop.Controls.Add(this.controlPanel);
@@ -476,49 +495,41 @@
             this.panelTop.Size = new System.Drawing.Size(630, 210);
             this.panelTop.TabIndex = 0;
             // 
-            // panelMiddle
+            // groupBox1
             // 
-            this.panelMiddle.ColumnCount = 3;
-            this.panelMiddle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.panelMiddle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.panelMiddle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panelMiddle.Controls.Add(this.resulltBox, 2, 0);
-            this.panelMiddle.Controls.Add(this.groupCommands, 0, 0);
-            this.panelMiddle.Controls.Add(this.panel2, 1, 0);
-            this.panelMiddle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMiddle.Location = new System.Drawing.Point(5, 239);
-            this.panelMiddle.Name = "panelMiddle";
-            this.panelMiddle.Padding = new System.Windows.Forms.Padding(3);
-            this.panelMiddle.RowCount = 1;
-            this.panelMiddle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panelMiddle.Size = new System.Drawing.Size(630, 44);
-            this.panelMiddle.TabIndex = 9;
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(376, 5);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 8);
+            this.groupBox1.Size = new System.Drawing.Size(149, 205);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Aktualna kolejka";
             // 
-            // panel2
+            // textBox3
             // 
-            this.panel2.Controls.Add(this.btnConfirm);
-            this.panel2.Controls.Add(this.inputBox);
-            this.panel2.Location = new System.Drawing.Point(193, 3);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(168, 38);
-            this.panel2.TabIndex = 8;
+            this.textBox3.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox3.Location = new System.Drawing.Point(3, 16);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(143, 181);
+            this.textBox3.TabIndex = 0;
             // 
-            // menuStrip
+            // groupRegs
             // 
-            this.menuStrip.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addShortcut});
-            this.menuStrip.Location = new System.Drawing.Point(5, 5);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(630, 24);
-            this.menuStrip.TabIndex = 10;
-            // 
-            // addShortcut
-            // 
-            this.addShortcut.Name = "addShortcut";
-            this.addShortcut.Size = new System.Drawing.Size(79, 20);
-            this.addShortcut.Text = "Dodaj skrót";
+            this.groupRegs.Controls.Add(this.textBox1);
+            this.groupRegs.Controls.Add(this.textBox2);
+            this.groupRegs.Controls.Add(this.tableLayoutPanel2);
+            this.groupRegs.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupRegs.Location = new System.Drawing.Point(105, 5);
+            this.groupRegs.Name = "groupRegs";
+            this.groupRegs.Size = new System.Drawing.Size(271, 200);
+            this.groupRegs.TabIndex = 12;
+            this.groupRegs.TabStop = false;
+            this.groupRegs.Text = "Stan rejestrów:";
             // 
             // textBox1
             // 
@@ -538,89 +549,6 @@
             this.textBox1.Text = "0000000000000000\r\n0000000000000000\r\n0000000000000000\r\n0000000000000000";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.WordWrap = false;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.btnDisplay, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnMakro, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnEnqueue, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(530, 289);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(100, 150);
-            this.tableLayoutPanel1.TabIndex = 11;
-            // 
-            // btnEnqueue
-            // 
-            this.btnEnqueue.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnEnqueue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEnqueue.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnEnqueue.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEnqueue.Location = new System.Drawing.Point(4, 4);
-            this.btnEnqueue.Margin = new System.Windows.Forms.Padding(1);
-            this.btnEnqueue.Name = "btnEnqueue";
-            this.btnEnqueue.Size = new System.Drawing.Size(92, 31);
-            this.btnEnqueue.TabIndex = 12;
-            this.btnEnqueue.Text = "Zakolejkuj";
-            this.btnEnqueue.UseVisualStyleBackColor = false;
-            // 
-            // btnMakro
-            // 
-            this.btnMakro.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnMakro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnMakro.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnMakro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnMakro.Location = new System.Drawing.Point(4, 40);
-            this.btnMakro.Margin = new System.Windows.Forms.Padding(1);
-            this.btnMakro.Name = "btnMakro";
-            this.btnMakro.Size = new System.Drawing.Size(92, 31);
-            this.btnMakro.TabIndex = 12;
-            this.btnMakro.Text = "Makro";
-            this.btnMakro.UseVisualStyleBackColor = false;
-            // 
-            // btnDisplay
-            // 
-            this.btnDisplay.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDisplay.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDisplay.Location = new System.Drawing.Point(4, 76);
-            this.btnDisplay.Margin = new System.Windows.Forms.Padding(1);
-            this.btnDisplay.Name = "btnDisplay";
-            this.btnDisplay.Size = new System.Drawing.Size(92, 31);
-            this.btnDisplay.TabIndex = 13;
-            this.btnDisplay.Text = "Tryb wyśw.";
-            this.btnDisplay.UseVisualStyleBackColor = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(253, 329);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
-            // 
-            // groupRegs
-            // 
-            this.groupRegs.Controls.Add(this.textBox1);
-            this.groupRegs.Controls.Add(this.textBox2);
-            this.groupRegs.Controls.Add(this.tableLayoutPanel2);
-            this.groupRegs.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupRegs.Location = new System.Drawing.Point(105, 5);
-            this.groupRegs.Name = "groupRegs";
-            this.groupRegs.Size = new System.Drawing.Size(271, 200);
-            this.groupRegs.TabIndex = 12;
-            this.groupRegs.TabStop = false;
-            this.groupRegs.Text = "Stan rejestrów:";
             // 
             // textBox2
             // 
@@ -663,6 +591,18 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(265, 61);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
+            // labelDX
+            // 
+            this.labelDX.AutoSize = true;
+            this.labelDX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelDX.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDX.Location = new System.Drawing.Point(202, 1);
+            this.labelDX.Name = "labelDX";
+            this.labelDX.Size = new System.Drawing.Size(59, 29);
+            this.labelDX.TabIndex = 14;
+            this.labelDX.Text = "DX";
+            this.labelDX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // labelAX
             // 
             this.labelAX.AutoSize = true;
@@ -674,18 +614,6 @@
             this.labelAX.TabIndex = 14;
             this.labelAX.Text = "AX";
             this.labelAX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelBX
-            // 
-            this.labelBX.AutoSize = true;
-            this.labelBX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelBX.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBX.Location = new System.Drawing.Point(70, 1);
-            this.labelBX.Name = "labelBX";
-            this.labelBX.Size = new System.Drawing.Size(59, 29);
-            this.labelBX.TabIndex = 14;
-            this.labelBX.Text = "BX";
-            this.labelBX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelCX
             // 
@@ -699,24 +627,186 @@
             this.labelCX.Text = "CX";
             this.labelCX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelDX
+            // labelBX
             // 
-            this.labelDX.AutoSize = true;
-            this.labelDX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelDX.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDX.Location = new System.Drawing.Point(202, 1);
-            this.labelDX.Name = "labelDX";
-            this.labelDX.Size = new System.Drawing.Size(59, 29);
-            this.labelDX.TabIndex = 14;
-            this.labelDX.Text = "DX";
-            this.labelDX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelBX.AutoSize = true;
+            this.labelBX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelBX.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBX.Location = new System.Drawing.Point(70, 1);
+            this.labelBX.Name = "labelBX";
+            this.labelBX.Size = new System.Drawing.Size(59, 29);
+            this.labelBX.TabIndex = 14;
+            this.labelBX.Text = "BX";
+            this.labelBX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panelMiddle
+            // 
+            this.panelMiddle.ColumnCount = 3;
+            this.panelMiddle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.panelMiddle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.panelMiddle.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panelMiddle.Controls.Add(this.resulltBox, 2, 0);
+            this.panelMiddle.Controls.Add(this.groupCommands, 0, 0);
+            this.panelMiddle.Controls.Add(this.panel2, 1, 0);
+            this.panelMiddle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelMiddle.Location = new System.Drawing.Point(5, 239);
+            this.panelMiddle.Name = "panelMiddle";
+            this.panelMiddle.Padding = new System.Windows.Forms.Padding(3);
+            this.panelMiddle.RowCount = 1;
+            this.panelMiddle.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.panelMiddle.Size = new System.Drawing.Size(630, 44);
+            this.panelMiddle.TabIndex = 9;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnConfirm);
+            this.panel2.Controls.Add(this.inputBox);
+            this.panel2.Location = new System.Drawing.Point(193, 3);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(168, 38);
+            this.panel2.TabIndex = 8;
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addShortcut});
+            this.menuStrip.Location = new System.Drawing.Point(5, 5);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(630, 24);
+            this.menuStrip.TabIndex = 10;
+            // 
+            // addShortcut
+            // 
+            this.addShortcut.Name = "addShortcut";
+            this.addShortcut.Size = new System.Drawing.Size(79, 20);
+            this.addShortcut.Text = "Dodaj skrót";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.btnQueueClr, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnDisplay, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnMakro, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnEnqueue, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(530, 289);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(100, 150);
+            this.tableLayoutPanel1.TabIndex = 11;
+            // 
+            // btnQueueClr
+            // 
+            this.btnQueueClr.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnQueueClr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnQueueClr.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnQueueClr.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnQueueClr.Location = new System.Drawing.Point(4, 112);
+            this.btnQueueClr.Margin = new System.Windows.Forms.Padding(1);
+            this.btnQueueClr.Name = "btnQueueClr";
+            this.btnQueueClr.Size = new System.Drawing.Size(92, 34);
+            this.btnQueueClr.TabIndex = 14;
+            this.btnQueueClr.Text = "Wyczyść kolejkę";
+            this.btnQueueClr.UseVisualStyleBackColor = false;
+            // 
+            // btnDisplay
+            // 
+            this.btnDisplay.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDisplay.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDisplay.Location = new System.Drawing.Point(4, 76);
+            this.btnDisplay.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDisplay.Name = "btnDisplay";
+            this.btnDisplay.Size = new System.Drawing.Size(92, 31);
+            this.btnDisplay.TabIndex = 13;
+            this.btnDisplay.Text = "Tryb wyśw.";
+            this.btnDisplay.UseVisualStyleBackColor = false;
+            // 
+            // btnMakro
+            // 
+            this.btnMakro.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnMakro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnMakro.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnMakro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMakro.Location = new System.Drawing.Point(4, 40);
+            this.btnMakro.Margin = new System.Windows.Forms.Padding(1);
+            this.btnMakro.Name = "btnMakro";
+            this.btnMakro.Size = new System.Drawing.Size(92, 31);
+            this.btnMakro.TabIndex = 12;
+            this.btnMakro.Text = "Makro";
+            this.btnMakro.UseVisualStyleBackColor = false;
+            // 
+            // btnEnqueue
+            // 
+            this.btnEnqueue.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnEnqueue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEnqueue.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnEnqueue.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEnqueue.Location = new System.Drawing.Point(4, 4);
+            this.btnEnqueue.Margin = new System.Windows.Forms.Padding(1);
+            this.btnEnqueue.Name = "btnEnqueue";
+            this.btnEnqueue.Size = new System.Drawing.Size(92, 31);
+            this.btnEnqueue.TabIndex = 12;
+            this.btnEnqueue.Text = "Zakolejkuj";
+            this.btnEnqueue.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(113, 293);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(411, 31);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "label1";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(324, 365);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(200, 21);
+            this.comboBox1.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(324, 329);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(200, 31);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Historia komend";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnEnqueueAg
+            // 
+            this.btnEnqueueAg.Location = new System.Drawing.Point(324, 401);
+            this.btnEnqueueAg.Name = "btnEnqueueAg";
+            this.btnEnqueueAg.Size = new System.Drawing.Size(92, 34);
+            this.btnEnqueueAg.TabIndex = 16;
+            this.btnEnqueueAg.Text = "Zakolejkuj ponownie";
+            this.btnEnqueueAg.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 450);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnEnqueueAg);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panelMiddle);
             this.Controls.Add(this.panelTop);
@@ -731,6 +821,12 @@
             this.shortcutPanel.ResumeLayout(false);
             this.shortcutPanel.PerformLayout();
             this.panelTop.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupRegs.ResumeLayout(false);
+            this.groupRegs.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.panelMiddle.ResumeLayout(false);
             this.panelMiddle.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -738,10 +834,6 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.groupRegs.ResumeLayout(false);
-            this.groupRegs.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -792,6 +884,12 @@
         private System.Windows.Forms.Label labelAX;
         private System.Windows.Forms.Label labelCX;
         private System.Windows.Forms.Label labelBX;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnQueueClr;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnEnqueueAg;
     }
 }
 
