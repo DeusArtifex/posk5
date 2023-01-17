@@ -8,16 +8,19 @@ namespace posk5
 {
     internal class Registry
     {
-        public string name { get; }
-        byte high;
-        byte low;
-        byte[] whole;
-        public Registry(string name)
+        private byte high;
+        private byte low;
+        public string Value
         {
-            this.name = name;
+            get
+            {
+                return Convert.ToString(high, 2).PadLeft(8, '0') + Convert.ToString(low, 2).PadLeft(8, '0');
+            }
+        }
+        public Registry()
+        {
             this.high = 0;
             this.low = 0;
-            this.whole = new byte[] { high, low};
         }
 
         public byte GetValue(char hl)
@@ -42,7 +45,6 @@ namespace posk5
             {
                 low = value;
             }
-            whole = new byte[] { high, low };
         }
 
         public void ClearValue(char hl)
@@ -62,137 +64,94 @@ namespace posk5
             }
         }
     }
-    internal class CommandQueue
+    internal abstract class RegCmdQueue
     {
+        private const int len = 8;
         private Queue<Command> commandQueue;
+        public abstract Queue<Command> CommandsQueue { get; }
+        public bool AddCommand(Command command)
+        {
+            if (CommandsQueue.Count == len) { return Overflow(); }
+            CommandsQueue.Enqueue(command);
+            return true;
+        }
+        public virtual bool Overflow()
+        {
+            return false;
+        }
+        public List<Command> ListCommands()
+        {
+            return CommandsQueue.ToList();
+        }
+        public bool IsEmpty()
+        {
+            return (CommandsQueue.Count == 0);
+        }
+    }
+    internal class CommandQueue : RegCmdQueue
+    {
+        private const int len = 8;
+        private Queue<Command> commandQueue;
+        public override Queue<Command> CommandsQueue { get => commandQueue; }
 
-        CommandQueue()
+        public CommandQueue()
         {
-            commandQueue = new Queue<Command>(8);
+            commandQueue = new Queue<Command>(len);
         }
-         public void AddCommand(Command command)
-        {
-            commandQueue.Enqueue(command);
-        }
-        public void ExecuteCommand(Registry[] regs)
+        public Command ExecuteCommand(Dictionary<char, Registry> regs)
         {
             Command command = commandQueue.Dequeue();
-            var decodedValues = DecodeParts(command.GetCommandValues());
-            byte p2 = 0;
-            switch (decodedValues.Item3)
+            byte value;
+            char modified, hl, op;
+            if (command.Operation == 'M')
             {
-                case 'A':
-                    if (decodedValues.Item1.Type == typeof(char[]))
-                    {
-                        if (decodedValues.Item2.Type == typeof(char[]))
-                        {
-                            foreach(Registry reg in regs)
-                            {
-                                if (reg.name.StartsWith(decodedValues.Item2[0])){
-                                    p2 = reg.GetValue(decodedValues.Item2[1]);
-                                    break;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            p2 = Command.ConvertBinary(decodedValues.Item2);
-                        }
-                        foreach (Registry reg in regs)
-                        {
-                            if (reg.name.StartsWith(decodedValues.Item1[0]))
-                            {
-                                reg.ExecuteOperation(decodedValues.Item1[1], p2, decodedValues.Item3);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        return; //błąd
-                    }
-                    break;
-                case 'S':
-                    if (decodedValues.Item1.Type == typeof(char[]))
-                    {
-                        if (decodedValues.Item2.Type == typeof(char[]))
-                        {
-                            foreach (Registry reg in regs)
-                            {
-                                if (reg.name.StartsWith(decodedValues.Item2[0]))
-                                {
-                                    p2 = reg.GetValue(decodedValues.Item2[1]);
-                                    break;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            p2 = Command.ConvertBinary(decodedValues.Item2);
-                        }
-                        foreach (Registry reg in regs)
-                        {
-                            if (reg.name.StartsWith(decodedValues.Item1[0]))
-                            {
-                                if(reg.GetValue(decodedValues.Item1[1]) < p2) { return; }               //Wynik mniejszy niż 0
-                                reg.ExecuteOperation(decodedValues.Item1[1], p2, decodedValues.Item3);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        return; //błąd
-                    }
-                    break;
-                case 'M':
-                    if (decodedValues.Item1.Type == typeof(char[]))
-                    {
-                        if (decodedValues.Item2.Type == typeof(char[]))
-                        {
-                            foreach (Registry reg in regs)
-                            {
-                                if (reg.name.StartsWith(decodedValues.Item1[0]))
-                                {
-                                    p2 = reg.GetValue(decodedValues.Item1[1]);
-                                    reg.ClearValue(decodedValues.Item1[1]);
-                                    break;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            return; //błąd
-                        }
-                        foreach (Registry reg in regs)
-                        {
-                            if (reg.name.StartsWith(decodedValues.Item2[0]))
-                            {
-                                reg.ExecuteOperation(decodedValues.Item2[1], p2, 'A');
-                            }
-                        }
-                    }
-                    else
-                    {
-                        return; //błąd
-                    }
-                    break;
-            }
-            
-
-        }
-        private dynamic DecodeParts(Tuple<string, string, char> t)
-        {
-            if (t.Item1.Length == 2 && t.Item1.Length == 2)
-            {
-                return (t.Item1.ToCharArray(), t.Item2.ToCharArray(), t.Item3);
-            } 
-            else if (t.Item1.Length != 2 && t.Item1.Length == 2) 
-            {
-                return (t.Item1, t.Item2.ToCharArray(), t.Item3);
+                if (command.Part2.Length != 2)
+                {
+                    return null; //błąd
+                }
+                value = regs[command.Part1[0]].GetValue(command.Part1[1]);
+                modified = command.Part2[0];
+                hl = command.Part2[1];
+                op = 'A';
+                regs[command.Part1[0]].ClearValue(command.Part1[1]);
             }
             else
             {
-                return (t.Item1.ToCharArray(), t.Item2, t.Item3);
+                if (command.Part2.Length != 2) { value = Command.ConvertBinary(command.Part2); }
+                else { value = regs[command.Part2[0]].GetValue(command.Part2[1]); }
+                modified = command.Part1[0];
+                hl = command.Part1[1];
+                op = command.Operation;
             }
+            regs[modified].ExecuteOperation(hl, value, op);
+            return command;
+        }
+        public void ClearQueue()
+        {
+            commandQueue.Clear();
+        }
+    }
+    internal class HistoryQueue: RegCmdQueue
+    {
+        private const int len = 16;
+        private Queue<Command> commandQueue;
+        public override Queue<Command> CommandsQueue { get => commandQueue; }
+        public override bool Overflow()
+        {
+            commandQueue.Dequeue();
+            return true;
+        }
+        public HistoryQueue()
+        {
+            commandQueue = new Queue<Command>(16);
+        }
+        public Command GetCommandByText(string text)
+        {
+            foreach(Command command in commandQueue)
+            {
+                if(command.ToString() == text) { return command; }
+            }
+            return null;
         }
     }
 }

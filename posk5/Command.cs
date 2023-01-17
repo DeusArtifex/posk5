@@ -8,26 +8,18 @@ namespace posk5
 {
     internal class Command
     {
-        public struct commandValues
-        {
-            public string part1 { get; }
-            public string part2;
-            public char operation;
-
-            public commandValues(Command command)
-            {
-                this.part1 = command.part1;
-                this.part2 = command.part2;
-                this.operation = command.operation;
-            }
-        }
-
         private string part1;
         private string part2;
         private char operation;
         public Command(string part1)
         {
             this.part1 = part1;
+        }
+        public Command(string part1, string operation, string part2)
+        {
+            this.part1 = part1;
+            this.part2 = part2;
+            this.operation = operation[0];
         }
 
         private string OperationSymbol()
@@ -54,11 +46,15 @@ namespace posk5
         }
         public string Part2
         {
-            set { part2 = value; }
+            set 
+            {
+                if (char.IsLetter(value[0])) { part2 = value; }
+                else { part2 = value.PadLeft(8, '0'); }
+            }
             get { return part2; }
         }
 
-        public string GetCommand()
+        public override string ToString()
         {
             StringBuilder command = new StringBuilder(part1);
             command.Append(' ');
@@ -66,13 +62,6 @@ namespace posk5
             command.Append(' ');
             command.Append(part2);
             return command.ToString();
-        }
-
-        public dynamic GetCommandValues()
-        {
-            commandValues values = new commandValues();
-            return (values.part1, values.part2, values.operation);
-
         }
 
         public static byte ConvertBinary(string binary)

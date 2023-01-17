@@ -34,9 +34,9 @@
             this.btnClr = new System.Windows.Forms.Button();
             this.btnL = new System.Windows.Forms.Button();
             this.btnH = new System.Windows.Forms.Button();
-            this.btnB = new System.Windows.Forms.Button();
             this.btnC = new System.Windows.Forms.Button();
             this.btnD = new System.Windows.Forms.Button();
+            this.btnB = new System.Windows.Forms.Button();
             this.btnMov = new System.Windows.Forms.Button();
             this.groupCommands = new System.Windows.Forms.GroupBox();
             this.btnSub = new System.Windows.Forms.Button();
@@ -55,9 +55,9 @@
             this.btnConfirm = new System.Windows.Forms.Button();
             this.panelTop = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.currentQueue = new System.Windows.Forms.TextBox();
             this.groupRegs = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.valuesRegs = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labelDX = new System.Windows.Forms.Label();
@@ -66,17 +66,17 @@
             this.labelBX = new System.Windows.Forms.Label();
             this.panelMiddle = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.addShortcut = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnQueueClr = new System.Windows.Forms.Button();
             this.btnDisplay = new System.Windows.Forms.Button();
             this.btnMakro = new System.Windows.Forms.Button();
             this.btnEnqueue = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.macro = new System.Windows.Forms.Label();
+            this.historyBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnEnqueueAg = new System.Windows.Forms.Button();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.addShortcut = new System.Windows.Forms.ToolStripMenuItem();
             this.controlPanel.SuspendLayout();
             this.groupCommands.SuspendLayout();
             this.shortcutPanel.SuspendLayout();
@@ -86,8 +86,8 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panelMiddle.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.menuStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnA
@@ -192,21 +192,6 @@
             this.btnH.UseVisualStyleBackColor = false;
             this.btnH.Click += new System.EventHandler(this.btnHL_Click);
             // 
-            // btnB
-            // 
-            this.btnB.AutoSize = true;
-            this.btnB.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnB.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnB.Location = new System.Drawing.Point(4, 52);
-            this.btnB.Margin = new System.Windows.Forms.Padding(0);
-            this.btnB.Name = "btnB";
-            this.btnB.Size = new System.Drawing.Size(45, 46);
-            this.btnB.TabIndex = 1;
-            this.btnB.Text = "B";
-            this.btnB.UseVisualStyleBackColor = false;
-            this.btnB.Click += new System.EventHandler(this.btnReg_Click);
-            // 
             // btnC
             // 
             this.btnC.AutoSize = true;
@@ -236,6 +221,21 @@
             this.btnD.Text = "D";
             this.btnD.UseVisualStyleBackColor = false;
             this.btnD.Click += new System.EventHandler(this.btnReg_Click);
+            // 
+            // btnB
+            // 
+            this.btnB.AutoSize = true;
+            this.btnB.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnB.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnB.Location = new System.Drawing.Point(4, 52);
+            this.btnB.Margin = new System.Windows.Forms.Padding(0);
+            this.btnB.Name = "btnB";
+            this.btnB.Size = new System.Drawing.Size(45, 46);
+            this.btnB.TabIndex = 1;
+            this.btnB.Text = "B";
+            this.btnB.UseVisualStyleBackColor = false;
+            this.btnB.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // btnMov
             // 
@@ -313,6 +313,8 @@
             this.inputBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.inputBox.Size = new System.Drawing.Size(130, 38);
             this.inputBox.TabIndex = 4;
+            this.inputBox.TextChanged += new System.EventHandler(this.inputBox_TextChanged);
+            this.inputBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputBox_KeyPress);
             // 
             // shortcutPanel
             // 
@@ -355,6 +357,7 @@
             this.btnSh8.TabIndex = 5;
             this.btnSh8.Text = "#8";
             this.btnSh8.UseVisualStyleBackColor = false;
+            this.btnSh8.Click += new System.EventHandler(this.btnSh_Click);
             // 
             // btnSh7
             // 
@@ -369,6 +372,7 @@
             this.btnSh7.TabIndex = 4;
             this.btnSh7.Text = "#7";
             this.btnSh7.UseVisualStyleBackColor = false;
+            this.btnSh7.Click += new System.EventHandler(this.btnSh_Click);
             // 
             // btnSh6
             // 
@@ -383,6 +387,7 @@
             this.btnSh6.TabIndex = 3;
             this.btnSh6.Text = "#6";
             this.btnSh6.UseVisualStyleBackColor = false;
+            this.btnSh6.Click += new System.EventHandler(this.btnSh_Click);
             // 
             // btnSh5
             // 
@@ -397,6 +402,7 @@
             this.btnSh5.TabIndex = 2;
             this.btnSh5.Text = "#5";
             this.btnSh5.UseVisualStyleBackColor = false;
+            this.btnSh5.Click += new System.EventHandler(this.btnSh_Click);
             // 
             // btnSh1
             // 
@@ -411,6 +417,7 @@
             this.btnSh1.TabIndex = 0;
             this.btnSh1.Text = "#1";
             this.btnSh1.UseVisualStyleBackColor = false;
+            this.btnSh1.Click += new System.EventHandler(this.btnSh_Click);
             // 
             // btnSh2
             // 
@@ -425,6 +432,7 @@
             this.btnSh2.TabIndex = 1;
             this.btnSh2.Text = "#2";
             this.btnSh2.UseVisualStyleBackColor = false;
+            this.btnSh2.Click += new System.EventHandler(this.btnSh_Click);
             // 
             // btnSh3
             // 
@@ -439,6 +447,7 @@
             this.btnSh3.TabIndex = 1;
             this.btnSh3.Text = "#3";
             this.btnSh3.UseVisualStyleBackColor = false;
+            this.btnSh3.Click += new System.EventHandler(this.btnSh_Click);
             // 
             // btnSh4
             // 
@@ -453,6 +462,7 @@
             this.btnSh4.TabIndex = 1;
             this.btnSh4.Text = "#4";
             this.btnSh4.UseVisualStyleBackColor = false;
+            this.btnSh4.Click += new System.EventHandler(this.btnSh_Click);
             // 
             // resulltBox
             // 
@@ -479,6 +489,7 @@
             this.btnConfirm.TabIndex = 7;
             this.btnConfirm.Text = "➤";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // panelTop
             // 
@@ -497,7 +508,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.currentQueue);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(376, 5);
             this.groupBox1.Name = "groupBox1";
@@ -507,20 +518,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Aktualna kolejka";
             // 
-            // textBox3
+            // currentQueue
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Location = new System.Drawing.Point(3, 16);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(143, 181);
-            this.textBox3.TabIndex = 0;
+            this.currentQueue.BackColor = System.Drawing.SystemColors.Window;
+            this.currentQueue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.currentQueue.Location = new System.Drawing.Point(3, 16);
+            this.currentQueue.Multiline = true;
+            this.currentQueue.Name = "currentQueue";
+            this.currentQueue.ReadOnly = true;
+            this.currentQueue.Size = new System.Drawing.Size(143, 181);
+            this.currentQueue.TabIndex = 0;
             // 
             // groupRegs
             // 
-            this.groupRegs.Controls.Add(this.textBox1);
+            this.groupRegs.Controls.Add(this.valuesRegs);
             this.groupRegs.Controls.Add(this.textBox2);
             this.groupRegs.Controls.Add(this.tableLayoutPanel2);
             this.groupRegs.Dock = System.Windows.Forms.DockStyle.Left;
@@ -531,24 +542,24 @@
             this.groupRegs.TabStop = false;
             this.groupRegs.Text = "Stan rejestrów:";
             // 
-            // textBox1
+            // valuesRegs
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.HideSelection = false;
-            this.textBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textBox1.Location = new System.Drawing.Point(53, 16);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox1.Size = new System.Drawing.Size(215, 120);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.Text = "0000000000000000\r\n0000000000000000\r\n0000000000000000\r\n0000000000000000";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.WordWrap = false;
+            this.valuesRegs.BackColor = System.Drawing.SystemColors.Window;
+            this.valuesRegs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.valuesRegs.Dock = System.Windows.Forms.DockStyle.Right;
+            this.valuesRegs.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valuesRegs.HideSelection = false;
+            this.valuesRegs.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.valuesRegs.Location = new System.Drawing.Point(53, 16);
+            this.valuesRegs.Multiline = true;
+            this.valuesRegs.Name = "valuesRegs";
+            this.valuesRegs.ReadOnly = true;
+            this.valuesRegs.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.valuesRegs.Size = new System.Drawing.Size(215, 120);
+            this.valuesRegs.TabIndex = 11;
+            this.valuesRegs.Text = "0000000000000000\r\n0000000000000000\r\n0000000000000000\r\n0000000000000000";
+            this.valuesRegs.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.valuesRegs.WordWrap = false;
             // 
             // textBox2
             // 
@@ -667,22 +678,6 @@
             this.panel2.Size = new System.Drawing.Size(168, 38);
             this.panel2.TabIndex = 8;
             // 
-            // menuStrip
-            // 
-            this.menuStrip.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addShortcut});
-            this.menuStrip.Location = new System.Drawing.Point(5, 5);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(630, 24);
-            this.menuStrip.TabIndex = 10;
-            // 
-            // addShortcut
-            // 
-            this.addShortcut.Name = "addShortcut";
-            this.addShortcut.Size = new System.Drawing.Size(79, 20);
-            this.addShortcut.Text = "Dodaj skrót";
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -716,6 +711,7 @@
             this.btnQueueClr.TabIndex = 14;
             this.btnQueueClr.Text = "Wyczyść kolejkę";
             this.btnQueueClr.UseVisualStyleBackColor = false;
+            this.btnQueueClr.Click += new System.EventHandler(this.btnQueueClr_Click);
             // 
             // btnDisplay
             // 
@@ -758,26 +754,26 @@
             this.btnEnqueue.TabIndex = 12;
             this.btnEnqueue.Text = "Zakolejkuj";
             this.btnEnqueue.UseVisualStyleBackColor = false;
+            this.btnEnqueue.Click += new System.EventHandler(this.btnEnqueue_Click);
             // 
-            // label1
+            // macro
             // 
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(113, 293);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(411, 31);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "label1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.macro.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.macro.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.macro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.macro.Location = new System.Drawing.Point(113, 293);
+            this.macro.Name = "macro";
+            this.macro.Size = new System.Drawing.Size(411, 31);
+            this.macro.TabIndex = 13;
+            this.macro.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
+            // historyBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(324, 365);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 14;
+            this.historyBox.FormattingEnabled = true;
+            this.historyBox.Location = new System.Drawing.Point(324, 365);
+            this.historyBox.Name = "historyBox";
+            this.historyBox.Size = new System.Drawing.Size(200, 21);
+            this.historyBox.TabIndex = 14;
             // 
             // label2
             // 
@@ -797,6 +793,24 @@
             this.btnEnqueueAg.TabIndex = 16;
             this.btnEnqueueAg.Text = "Zakolejkuj ponownie";
             this.btnEnqueueAg.UseVisualStyleBackColor = true;
+            this.btnEnqueueAg.Click += new System.EventHandler(this.btnEnqueueAg_Click);
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addShortcut});
+            this.menuStrip.Location = new System.Drawing.Point(5, 5);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(630, 24);
+            this.menuStrip.TabIndex = 10;
+            // 
+            // addShortcut
+            // 
+            this.addShortcut.Name = "addShortcut";
+            this.addShortcut.Size = new System.Drawing.Size(79, 20);
+            this.addShortcut.Text = "Dodaj skrót";
+            this.addShortcut.Click += new System.EventHandler(this.addShortcut_Click);
             // 
             // MainWindow
             // 
@@ -805,8 +819,8 @@
             this.ClientSize = new System.Drawing.Size(640, 450);
             this.Controls.Add(this.btnEnqueueAg);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.historyBox);
+            this.Controls.Add(this.macro);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panelMiddle);
             this.Controls.Add(this.panelTop);
@@ -831,9 +845,9 @@
             this.panelMiddle.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -869,9 +883,7 @@
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.TableLayoutPanel panelMiddle;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem addShortcut;
+        private System.Windows.Forms.TextBox valuesRegs;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnMakro;
         private System.Windows.Forms.Button btnEnqueue;
@@ -884,12 +896,14 @@
         private System.Windows.Forms.Label labelAX;
         private System.Windows.Forms.Label labelCX;
         private System.Windows.Forms.Label labelBX;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox currentQueue;
+        private System.Windows.Forms.Label macro;
         private System.Windows.Forms.Button btnQueueClr;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox historyBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnEnqueueAg;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem addShortcut;
     }
 }
 
