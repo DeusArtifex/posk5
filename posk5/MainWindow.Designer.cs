@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnA = new System.Windows.Forms.Button();
             this.controlPanel = new System.Windows.Forms.TableLayoutPanel();
             this.btnGo = new System.Windows.Forms.Button();
@@ -68,7 +69,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnQueueClr = new System.Windows.Forms.Button();
-            this.btnDisplay = new System.Windows.Forms.Button();
             this.btnMakro = new System.Windows.Forms.Button();
             this.btnEnqueue = new System.Windows.Forms.Button();
             this.macro = new System.Windows.Forms.Label();
@@ -77,6 +77,9 @@
             this.btnEnqueueAg = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.addShortcut = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMode = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.openMacro = new System.Windows.Forms.OpenFileDialog();
             this.controlPanel.SuspendLayout();
             this.groupCommands.SuspendLayout();
             this.shortcutPanel.SuspendLayout();
@@ -685,7 +688,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.btnQueueClr, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnDisplay, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnMode, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnMakro, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnEnqueue, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(530, 289);
@@ -713,20 +716,6 @@
             this.btnQueueClr.UseVisualStyleBackColor = false;
             this.btnQueueClr.Click += new System.EventHandler(this.btnQueueClr_Click);
             // 
-            // btnDisplay
-            // 
-            this.btnDisplay.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDisplay.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDisplay.Location = new System.Drawing.Point(4, 76);
-            this.btnDisplay.Margin = new System.Windows.Forms.Padding(1);
-            this.btnDisplay.Name = "btnDisplay";
-            this.btnDisplay.Size = new System.Drawing.Size(92, 31);
-            this.btnDisplay.TabIndex = 13;
-            this.btnDisplay.Text = "Tryb wyśw.";
-            this.btnDisplay.UseVisualStyleBackColor = false;
-            // 
             // btnMakro
             // 
             this.btnMakro.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -740,6 +729,7 @@
             this.btnMakro.TabIndex = 12;
             this.btnMakro.Text = "Makro";
             this.btnMakro.UseVisualStyleBackColor = false;
+            this.btnMakro.Click += new System.EventHandler(this.btnMakro_Click);
             // 
             // btnEnqueue
             // 
@@ -769,8 +759,10 @@
             // 
             // historyBox
             // 
+            this.historyBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.historyBox.FormattingEnabled = true;
             this.historyBox.Location = new System.Drawing.Point(324, 365);
+            this.historyBox.MaxDropDownItems = 16;
             this.historyBox.Name = "historyBox";
             this.historyBox.Size = new System.Drawing.Size(200, 21);
             this.historyBox.TabIndex = 14;
@@ -811,6 +803,31 @@
             this.addShortcut.Size = new System.Drawing.Size(79, 20);
             this.addShortcut.Text = "Dodaj skrót";
             this.addShortcut.Click += new System.EventHandler(this.addShortcut_Click);
+            // 
+            // btnMode
+            // 
+            this.btnMode.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnMode.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnMode.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMode.Location = new System.Drawing.Point(4, 76);
+            this.btnMode.Margin = new System.Windows.Forms.Padding(1);
+            this.btnMode.Name = "btnMode";
+            this.btnMode.Size = new System.Drawing.Size(53, 31);
+            this.btnMode.TabIndex = 13;
+            this.btnMode.Text = "Tryb";
+            this.btnMode.UseVisualStyleBackColor = false;
+            this.btnMode.Click += new System.EventHandler(this.btnMode_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // openMacro
+            // 
+            this.openMacro.FileName = "openFileDialog1";
+            this.openMacro.RestoreDirectory = true;
             // 
             // MainWindow
             // 
@@ -887,7 +904,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnMakro;
         private System.Windows.Forms.Button btnEnqueue;
-        private System.Windows.Forms.Button btnDisplay;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupRegs;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -904,6 +920,9 @@
         private System.Windows.Forms.Button btnEnqueueAg;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem addShortcut;
+        private System.Windows.Forms.Button btnMode;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.OpenFileDialog openMacro;
     }
 }
 
