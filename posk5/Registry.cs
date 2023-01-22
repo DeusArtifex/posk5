@@ -74,11 +74,11 @@ namespace posk5
     }
     internal abstract class RegCmdQueue     //Obiekt kolejki komend rejestru, sam w sobie nie jest używany, ale dwa kolejne obiekty dziedziczą jego metody i właściwości.
     {
-        private int len = 0;
+        public abstract int len { get; set; }
         public abstract Queue<Command> CommandsQueue { get; }   //Deklaracja metody, którą zadeklarować muszą wszystkie dziedziczące obiekty
         public bool AddCommand(Command command)                 //Deklaracja metody, z której korzystać będą wszystkie dziedziczące obiekty
         {
-            if (CommandsQueue.Count == this.len) { return Overflow(); }  //Jeżeli komenda nie zmieści się w kolejce, obiekt wywołuje swoją metodę overflow, w innych wypadkach ją doda.
+            if (CommandsQueue.Count == this.len && !Overflow()) { return Overflow(); }  //Jeżeli komenda nie zmieści się w kolejce, obiekt wywołuje swoją metodę overflow, w innych wypadkach ją doda.
             CommandsQueue.Enqueue(command);
             return true;
         }
@@ -97,7 +97,7 @@ namespace posk5
     }
     internal class CommandQueue : RegCmdQueue   //Kolejka komend, jest kolejką komend, które kolejne będą wykonywane na rejestrach. Wszystkie rejestry dzielą kolejkę.
     {
-        private int len { get; }
+        public override int len { get; set; }
         private Queue<Command> commandQueue;
         public override Queue<Command> CommandsQueue { get => commandQueue; }   //Właściwość CommandsQueue ma zwracać kolejkę, którą posiada jako pole. Umożliwia operacje -
                                                                                 // - poprzez metody dziedziczone.
@@ -141,7 +141,7 @@ namespace posk5
     }
     internal class HistoryQueue: RegCmdQueue        //Obiekt historii kolejki.
     {
-        private int len { get; }
+        public override int len { get; set; }
         private Queue<Command> commandQueue;
         public override Queue<Command> CommandsQueue { get => commandQueue; } //Nadpisanie jak w powyższym obiekcie
         public override bool Overflow()     //Funkcja overflow, tutaj nadpisana

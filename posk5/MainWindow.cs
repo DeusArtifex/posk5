@@ -148,7 +148,7 @@ namespace posk5
         private void timer1_Tick(object sender, EventArgs e)                //Obsługa timera, który uruchamia się w trybie pracy automatycznej
         {
 
-            if(queue.IsEmpty())                               //Jeżeli kolejka nie jest pusta, wykonywane jest kolejne zadanie.
+            if(!queue.IsEmpty())                               //Jeżeli kolejka nie jest pusta, wykonywane jest kolejne zadanie.
             {
                 btnGo.PerformClick();
             }
@@ -243,6 +243,7 @@ namespace posk5
             currentCommand = null;
             currentQueue_Update();
             resulltBox.Clear();
+            DisableEnqueue();
         }
 
         private void btnEnqueueAg_Click(object sender, EventArgs e)         //Kolejkowanie ponownie komendy z historii. Pobierany jest obecnie wybrany element z listy -
